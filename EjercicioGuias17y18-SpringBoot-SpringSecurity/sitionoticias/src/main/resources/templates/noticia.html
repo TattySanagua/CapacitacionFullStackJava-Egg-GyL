@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"> </head>
+    <body>
+        <nav th:replace="/fragments/navbar :: nav"> </nav>
+        <div class="h1">
+            <p class="col-6" th:text="${noticia.titulo}"></p>
+        </div>
+        <div class="h4">
+            <p class="col-9" th:text="${noticia.cuerpo}"></p>
+            <p class="col-3" th:text="${noticia.fecha}"></p>
+            <a class="btn btn-primary" th:href="@{/noticia/modificar/__${noticia.id}__}" sec:authorize="hasRole('ADMINISTRADOR')" role="button">Modificar</a>
+            <a class="btn btn-primary" href="#" sec:authorize="hasRole('ADMINISTRADOR')" role="button">Eliminar</a>
+            <a class="btn btn-primary" th:href="@{/inicio}" role="button">Volver</a>
+        </div>
+        
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>
